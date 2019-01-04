@@ -29,3 +29,9 @@ class Train:
 
     def get_history(self):
         return self.__history
+    
+    def move_next_node(self, next_node):
+        pass
+    
+    def switch_line(self, line):
+        pass

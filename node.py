@@ -4,7 +4,7 @@ class Node:
         self.__id = node_info[0]
         self.__name = node_info[1]
         self.__line = None
-        self.__current_train = ''
+        self.__current_train = None
     
     def __str__(self):
         return self.get_id() + ' ' + self.get_name()
