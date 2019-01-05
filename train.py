@@ -1,10 +1,3 @@
-
-def generate_trains(total_train):
-    trains = [Train() for _ in range(total_train)]
-    for index, train in enumerate(trains):
-        train.set_name(str(index))
-    return trains
-
 class Train:
     def __init__(self):
         self.__name = 'T'

@@ -66,13 +66,16 @@ def handling_data(file):
             data = [each[:-1].split('\n') for each in all_content[1:-1]]
 
             ls_inform = handle_certain_data(all_content[-1].split('\n')[-4:-1])
+
             start_point = find_data(data, ls_inform[0])
+            start_info = ('{}:{}'.format(start_point[2], start_point[0]), start_point[1])
             end_point = find_data(data, ls_inform[1])
+            end_info = ('{}:{}'.format(end_point[2], end_point[0]), end_point[1])
             total_train = ls_inform[2]
 
             all_content[-1] = '\n'.join(ls_inform[:-4])
 
-        return data, start_point, end_point, total_train
+        return data, start_info, end_info, total_train
     except IOError:
         print("Could not open file! Please close Excel!", file=sys.stderr)
 
@@ -155,8 +158,9 @@ def find_total_turns(total_data, start_point, end_point, total_train):
 from node import Node
 from hub import Hub
 from line import Line
+from train import Train
 
-def create_list_of_lines(data):
+def generate_lines(data):
     lines = []
 
     for line in data:
@@ -169,4 +173,10 @@ def create_list_of_lines(data):
         lines.append(line_obj)
 
     return lines
+
+def generate_trains(total_train):
+    trains = [Train() for _ in range(total_train)]
+    for index, train in enumerate(trains):
+        train.set_name(str(index))
+    return trains
 

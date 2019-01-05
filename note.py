@@ -13,4 +13,4 @@ ratio = turns_A_reach_end?? / turns_A_wait??
 
 Conclusion:
 Find path for 1st train so that last_train's turn is smallest (minimum of line changes)
-total_turn = turns_last_train_wait + turns_that_last_train_reach_end
+total_turn = turns_last_train_wait + turns_that_last_train_move

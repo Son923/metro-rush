@@ -7,7 +7,6 @@ class Hub(Node):
     
     def set_line(self, line):
         pass
-        
 
     def get_conn_line(self):
         return self.conn_line

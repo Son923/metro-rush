@@ -9,13 +9,9 @@ class Graph(ABC):
         self.start_node = start_point
         self.end_node = end_point
 
-        self.total_turns = 0
-        self.all_train_histories = []
+        self.__total_turns = 0
+        self.__all_train_histories = []
 
-    # Set up value for attributes
-    def __setattr__(self, attribute, value):
-        super(Graph, self).__setattr__(attribute, value)
-    
     def get_start_end(self):
         return (self.start_node, self.end_node)
 

@@ -3,7 +3,7 @@ class Node:
         node_info = node_info.split(':')
         self.__id = node_info[0]
         self.__name = node_info[1]
-        self.__line = None
+        self.__line = line
         self.__current_train = None
     
     def __str__(self):
