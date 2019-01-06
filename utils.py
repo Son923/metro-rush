@@ -156,7 +156,6 @@ def find_total_turns(total_data, start_point, end_point, total_train):
 # Son's part
 # ===========================================================================
 from node import Node
-from hub import Hub
 from line import Line
 from train import Train
 
@@ -166,10 +165,15 @@ def generate_lines(data):
     for line in data:
         line_obj = Line(line[0])
         for node_info in line[1:]:
+            is_Hub = False
             if 'Conn' in node_info:
-                line_obj.add_hubs_in_line(node_info)
-            # else:
-            line_obj.add_nodes_in_line(node_info)
+                is_Hub = True
+            node_obj = Node(node_info, line_obj.get_name(), is_Hub)
+            line_obj.add_nodes_in_line(node_obj)
+
+            if is_Hub:
+                line_obj.add_hubs_in_line(node_obj)
+
         lines.append(line_obj)
 
     return lines

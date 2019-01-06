@@ -18,3 +18,8 @@ class Graph(ABC):
     @abstractmethod
     def find_smallest_turn(self):
         pass
+    
+    @abstractmethod
+    def find_path(self, start):
+        end = self.end_node
+        pass path
