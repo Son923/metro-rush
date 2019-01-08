@@ -8,19 +8,23 @@ class Train:
     
     def __str__(self):
         return self.get_name()
-    
+
+    # GET, SET pairs:
+    # Graph attr
     def set_graph(self, graph_obj):
         self.__graph = graph_obj
     
     def get_graph(self):
         return self.__graph
     
+    # Name attr
     def set_name(self, index):
         self.__name += index
         
     def get_name(self):
         return self.__name
     
+    # Current pos attr
     def set_current(self, node):
         self.__current = node
         self.__history.append(node)
@@ -28,18 +32,21 @@ class Train:
     def get_current(self):
         return self.__current
     
+    # Path attr    
     def set_path(self, path):
         self.__path = path
     
     def get_path(self):
         return self.__path
     
+    # History attr
     def add_history(self, next_node):
         self.__history.append(next_node)
 
     def get_history(self):
         return self.__history
     
+    # Method
     def move_next_node(self, next_node):
         path = self.get_path()
         next_node = path[path.index(self.get_current()) + 1]

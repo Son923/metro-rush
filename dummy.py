@@ -11,5 +11,5 @@ class Dummy(Graph):
         return turns, trains_history
     
     def find_path(self):
-        return path
+        pass
     

@@ -31,7 +31,7 @@ class Node:
     # FUNCTION FOR HUB
 
     def set_line(self, line):
-        pass
+        self.__line = line
 
     def get_conn_line(self):
         return self.conn_line

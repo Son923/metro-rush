@@ -21,5 +21,4 @@ class Graph(ABC):
     
     @abstractmethod
     def find_path(self, start):
-        end = self.end_node
-        pass path
+        pass
