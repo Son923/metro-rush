@@ -8,17 +8,23 @@ class Line:
     def __str__(self):
         return self.get_name()
 
+    # GET, SET PAIRS:
+    # name
     def get_name(self):
         return self.__name
 
+    # hubs list
     def add_hubs_in_line(self, hub_obj):
         self.__hubs_in_line.append(hub_obj)
     
+    def get_hubs_in_line(self):
+        return self.__hubs_in_line
+    
+    # nodes list
     def get_nodes_in_line(self):
         return self.__nodes_in_line
 
     def add_nodes_in_line(self, node_obj):
         self.__nodes_in_line.append(node_obj)
     
-    def get_hubs_in_line(self):
-        return self.__hubs_in_line
+    
