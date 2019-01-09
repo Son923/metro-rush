@@ -21,7 +21,7 @@ def handling_argument():
         raise FileNotFoundError()
 
     if args.algorithm is not None and args.algorithm not in ls_algorithm:
-        print("SyntaxError: Algorithm not found!", file=sys.stderr)
+        print("SyntaxError: Algorithm not found!")
         exit(0)
 
     return args.filename, args.algorithm
@@ -33,11 +33,10 @@ def handle_certain_data(alist):
     Handling all start point, end point and the number of train.
     """
     for i, each in enumerate(alist):
-        if i == len(alist) - 1:
+        if i == len(alist):
             alist[i] = int(each.split('=')[1:][0])
         else:
             alist[i] = each.split('=')[1:][0].split(':')
-
     return alist
 
 
@@ -65,19 +64,20 @@ def handling_data(file):
             all_content = myfile.read().split('#')
             data = [each[:-1].split('\n') for each in all_content[1:-1]]
 
-            ls_inform = handle_certain_data(all_content[-1].split('\n')[-4:-1])
+            ls_inform = handle_certain_data(all_content[-1].split('\n')[-3:-1])
 
             start_point = find_data(data, ls_inform[0])
+            # print(start_point)
             start_info = ('{}:{}'.format(start_point[2], start_point[0]), start_point[1])
             end_point = find_data(data, ls_inform[1])
             end_info = ('{}:{}'.format(end_point[2], end_point[0]), end_point[1])
-            total_train = ls_inform[2]
+            total_train = 100
 
             all_content[-1] = '\n'.join(ls_inform[:-4])
 
         return data, start_info, end_info, total_train
     except IOError:
-        print("Could not open file! Please close Excel!", file=sys.stderr)
+        print("Could not open file! Please close Excel!")
 
 
 # ===========================================================================

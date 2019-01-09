@@ -1,0 +1,23 @@
+#Red line
+1:A
+2:B
+3:C:Conn: Blue line
+4:D:Conn: Yellow line
+5:J
+6:L
+#Blue line
+1:M
+2:C:Conn: Red line
+3:F:Conn: Yellow line
+4:G
+#Yellow line
+1:H
+2:F:Conn: Blue line
+3:E
+4:D:Conn: Red line
+5:Q
+6:K
+#
+START=Red line:2
+END=Yellow line:6
+TRAINS=30

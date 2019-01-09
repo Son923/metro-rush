@@ -1,24 +1,38 @@
-from abc import ABC, abstractmethod
 
-
-class Graph(ABC):
-    # Store all data of metro graph.
-    def __init__(self, lines, trains, start_point, end_point):
-        self.lines = lines
-        self.trains = trains
-        self.start_node = start_point
-        self.end_node = end_point
-
-        self.__total_turns = 0
-        self.__all_train_histories = []
-
-    def get_start_end(self):
-        return (self.start_node, self.end_node)
-
-    @abstractmethod
-    def find_smallest_turn(self):
-        pass
+class Graph():
+    def __init__(self, lines, start_node, end_node):
+        self.__lines = lines
+        self.__start_node = start_node
+        self.__end_node = end_node
     
-    @abstractmethod
-    def find_path(self, start):
-        pass
+    def get_line(self):
+        return self.__lines
+    
+    def get_start_node(self):
+        return self.__start_node.get_name() + '-' + self.__start_node.get_line()
+    
+    def get_end_node(self):
+        return self.__end_node.get_name() + '-' + self.__end_node.get_line()
+    
+    def create_graph(self):
+        lines = self.get_line()
+        graph = {}
+        for line in lines:
+            nodes = line.get_nodes_in_line()
+            for node in nodes:
+                node_name = node.get_name()
+                index = nodes.index(node)
+
+                if node_name not in graph:
+                    graph[node_name] = set()
+
+                if index == 0:
+                    graph[node_name].add(nodes[index + 1].get_name()+'-'+nodes[index + 1].get_line())
+                elif index == len(nodes) - 1:
+                    graph[node_name].add(nodes[index - 1].get_name()+'-'+nodes[index - 1].get_line())
+                else:
+                    graph[node_name].add(nodes[index - 1].get_name()+'-'+nodes[index - 1].get_line())
+                    graph[node_name].add(nodes[index + 1].get_name()+'-'+nodes[index + 1].get_line())
+    
+        return graph
+

@@ -55,7 +55,7 @@ class Train:
             self.set_current_node(next_node)
         self.add_history(self.get_current_node())
     
-    def switch_line(self, line):
+    def switching_line(self, line):
         pass
     
     def is_available_node(self, node):
